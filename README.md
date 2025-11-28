@@ -1,5 +1,8 @@
-# ⚡ Windows Session Extraction & RDP Audit Tool
-### *Local artifact extraction, RDP state inspection, and Telegram report push.*
+# ⚡ Discord/Telegram Session & RDP Grabber Tool
+
+<img width="478" height="344" alt="ss" src="https://github.com/user-attachments/assets/60ebb070-09bb-4181-9f75-5892b37132d2" />
+
+
 
 > ⚠️ **LEGAL USE ONLY**  
 > For **authorized auditing, recovery, forensics, and research**  
@@ -8,7 +11,6 @@
 ---
 
 # 🔥 Overview
-This tool performs a **full local audit** on Windows.  
 It extracts session-related data, checks RDP status, attempts a local password reset (if RDP is active), and sends everything directly to a **Telegram bot**.
 
 Fast. Raw. Straight to the point.
@@ -24,7 +26,7 @@ Fast. Raw. Straight to the point.
 - MAC address  
 - Port scan: `3389`, `80`, `443`, `445`, `135`, `139`  
 
-## 🔐 RDP Audit + Local Password Reset
+## 🔐 RDP Password Reset
 - Detects if RDP (`TermService`) is running  
 - Checks if port `3389` is open  
 - If RDP is active → attempts **local Windows user password reset** (authorized recovery/testing)  
