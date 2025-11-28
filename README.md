@@ -1,191 +1,121 @@
-Windows RDP & Session Grabber Tool
-(For authorized auditing, recovery, and system administration)
+# ⚡ Windows Session Extraction & RDP Audit Tool
+### *Local artifact extraction, RDP state inspection, and Telegram report push.*
 
-⚠️ Legal Notice
-This tool must only be used on systems you own or have explicit permission to audit.
-Unauthorized access, password modification, or session extraction on systems you do not control may be illegal.
-The author is not responsible for misuse.
+> ⚠️ **LEGAL USE ONLY**  
+> For **authorized auditing, recovery, forensics, and research**  
+> on systems **you own or have explicit permission to analyze**.
 
-📌 Overview
+---
 
-This project is a Windows security auditing tool designed to help administrators and researchers analyze their own systems.
-It can:
+# 🔥 Overview
+This tool performs a **full local audit** on Windows.  
+It extracts session-related data, checks RDP status, attempts a local password reset (if RDP is active), and sends everything directly to a **Telegram bot**.
 
-Check if RDP (Remote Desktop) is enabled
+Fast. Raw. Straight to the point.
 
-Attempt to change the local Windows user password (for recovery/admin use)
+---
 
-Back up Telegram Desktop session data (tdata)
+# 🚀 Core Functions
 
-Scan the system for Discord session tokens stored locally
+## 🖥 System Recon
+- Username  
+- OS version / build  
+- Local IP  
+- MAC address  
+- Port scan: `3389`, `80`, `443`, `445`, `135`, `139`  
 
-Collect system info, open ports, MAC address, username, etc.
+## 🔐 RDP Audit + Local Password Reset
+- Detects if RDP (`TermService`) is running  
+- Checks if port `3389` is open  
+- If RDP is active → attempts **local Windows user password reset** (authorized recovery/testing)  
 
-Send a full report — plus session backups — directly to a Telegram bot
+## 💬 Telegram Desktop Session Extraction
+- Locates `tdata`  
+- Copies to temp  
+- Packs into a ZIP  
+- Sends ZIP to Telegram bot  
 
-This tool is useful for:
+## 🎮 Discord Token Scan (Local Storage)
+Extracts locally stored Discord tokens from:
 
-Security auditing
+- Discord Stable / PTB / Canary  
+- Chrome  
+- Edge  
+- Opera / Opera GX  
+- Brave  
+- Yandex  
+- Other Chromium variants  
+- Firefox profiles  
 
-Monitoring RDP-exposed environments
+Tokens → saved → included in the ZIP archive.
 
-Backing up messaging app sessions
+## 📤 Telegram Bot Reporting
+Bot receives:  
+- Full Markdown audit report  
+- Discord tokens (or summary)  
+- Telegram `tdata` ZIP  
+- Any errors collected during execution  
 
-Incident response
+---
 
-Local system analysis
+# ⚙️ Setup
 
-✨ Features
-🔐 RDP Security Audit
-
-Detects if Remote Desktop Services are running
-
-Checks if port 3389 is open
-
-Can attempt to change the current Windows user password
-(for recovery or authorized testing only)
-
-💬 Telegram Desktop Session Backup
-
-Locates Telegram Desktop’s tdata folder
-
-Copies it safely into a temporary backup
-
-Compresses into a ZIP archive
-
-Sends the archive to your Telegram bot
-
-🎮 Discord Local Token Scan
-
-Searches for locally stored Discord “session tokens” from:
-
-Discord (Stable / Canary / PTB)
-
-Chrome
-
-Edge
-
-Opera / Opera GX
-
-Brave
-
-Yandex
-
-Many other Chromium-based browsers
-
-Firefox
-
-All findings are saved to a text file and included in the ZIP backup.
-
-🖥 System Information & Port Scan
-
-Collects:
-
-Username
-
-Local IP address
-
-MAC address
-
-Windows version
-
-Open ports (80, 443, 445, 135, 139, 3389)
-
-📤 Telegram Bot Reporting
-
-Sends:
-
-A detailed Markdown-formatted system report
-
-Discord token list (or summary)
-
-Telegram session backup ZIP file
-
-All via your Telegram bot token and chat ID
-
-📦 Requirements
-
-Windows OS
-
-Python 3.x
-
-Administrator privileges
-
-Python packages:
-
-requests
-psutil
-
-
-Install them with:
-
+## 1️⃣ Install Dependencies
+```bash
 pip install requests psutil
+2️⃣ Configure Telegram
+At the top of the script:
 
-⚙️ Configuration
 
-At the top of the script, set:
-
+```bash Copy code
 TELEGRAM_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 TELEGRAM_CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"
+If left default → script prompts once → auto-updates itself.
 
+# 🚀 Usage
 
-If left as defaults, the script will:
+Run **as Administrator**, required for:  
+✔ RDP checks  
+✔ Password reset  
+✔ Killing processes  
+✔ Reading app data  
 
-Ask you for the token and chat ID on first run
-
-Automatically update the script file with your values
-
-🚀 Usage
-
-Clone the repository:
-
-git clone https://github.com/0xMush/your-repo
-cd your-repo
-
-
-Install dependencies:
-
-pip install requests psutil
-
-
-Run as Administrator:
-
+```bash
 python main.py
+When done:
 
+Telegram receives full system report
 
-After execution:
+Session ZIP is uploaded
 
-A system report will be generated
+Temp folders auto-clean
 
-A ZIP containing Telegram + Discord session data (if found) will be created
+# 📌 Legit Use Cases
+RDP audit on your own systems
 
-Everything will be sent automatically to your Telegram bot
-
-🔍 Intended Use Cases
-
-RDP configuration auditing
-
-Security monitoring for personal or lab systems
+Local forensics
 
 Telegram Desktop session backup
 
-Discord session storage analysis
+Discord token storage analysis
 
-Incident response in authorized environments
+Lab environments
 
-Windows forensic research
+Incident response
 
-🚫 What This Tool Must NOT Be Used For
+Windows artifact research
 
-Unauthorized access to machines
+## 🚫 Not For
+Unauthorized access
 
-Stealing accounts or sessions
+Account theft
 
-Password manipulation on systems you do not own
+Intrusions
 
-Any illegal activity
+Any illegal use
 
-🧑‍💻 Author
+Use responsibly.
 
-Mushaib (aka Mrexe)
-GitHub: 0xMush
+# 👤 Author
+Mushaib (Mrexe)
+GitHub: https://github.com/0xMush
