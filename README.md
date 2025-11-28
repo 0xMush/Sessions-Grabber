@@ -71,7 +71,7 @@ At the top of the script:
 TELEGRAM_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 TELEGRAM_CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"
 If left default → script prompts once → auto-updates itself.
-```bash
+```
 
 # 🚀 Usage
 
