@@ -63,14 +63,15 @@ Bot receives:
 ## 1️⃣ Install Dependencies
 ```bash
 pip install requests psutil
+'''
 2️⃣ Configure Telegram
 At the top of the script:
 
-
-Copy code
+```bash
 TELEGRAM_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
 TELEGRAM_CHAT_ID = "YOUR_TELEGRAM_CHAT_ID"
 If left default → script prompts once → auto-updates itself.
+```bash
 
 # 🚀 Usage
 
@@ -82,6 +83,7 @@ Run **as Administrator**, required for:
 
 ```bash
 python main.py
+```
 When done:
 
 Telegram receives full system report
