@@ -63,7 +63,7 @@ Bot receives:
 ## 1️⃣ Install Dependencies
 ```bash
 pip install requests psutil
-'''
+```
 2️⃣ Configure Telegram
 At the top of the script:
 
